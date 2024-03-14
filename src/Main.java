@@ -1,17 +1,18 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.math.*;
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        int numDigits = 50;
+        BigDecimal sum = BigDecimal.ZERO;
+        BigDecimal sixteen = BigDecimal.valueOf(16);
+        BigDecimal one = BigDecimal.ONE;
+        for (int k = 0; k < numDigits; k++) {
+            BigDecimal a = BigDecimal.valueOf(4).divide(BigDecimal.valueOf(8 * k + 1), numDigits, BigDecimal.ROUND_HALF_UP);
+            BigDecimal b = BigDecimal.valueOf(2).divide(BigDecimal.valueOf(8 * k + 4), numDigits, BigDecimal.ROUND_HALF_UP);
+            BigDecimal c = BigDecimal.valueOf(1).divide(BigDecimal.valueOf(8 * k + 5), numDigits, BigDecimal.ROUND_HALF_UP);
+            BigDecimal d = BigDecimal.valueOf(1).divide(BigDecimal.valueOf(8 * k + 6), numDigits, BigDecimal.ROUND_HALF_UP);
+            BigDecimal term = a.subtract(b).subtract(c).subtract(d).divide(BigDecimal.valueOf(Math.pow(16, k)), numDigits, BigDecimal.ROUND_HALF_UP);
+            sum = sum.add(term);
+        }
+        System.out.println(sum);
         }
     }
-}
